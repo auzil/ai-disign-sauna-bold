@@ -1,0 +1,949 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Lumen Private Spa Prague — the whole spa, just for the two of you</title>
+<meta name="description" content="Private sauna, jacuzzi and relax room in Prague, open 24/7. From 1 990 Kč for 2 hours, for two. Towels, robes and slippers included.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  /* color */
+  --color-bone: #F2F1EB;
+  --color-ink: #333333;
+  --color-ink-soft: #5E5B55;
+  --color-night: #07131A;
+  --color-flame: #E7B685;
+  --color-morning: #D9E0E3;
+  --color-day: #F6EDDA;
+  --color-dusk: #9A735C;
+  --color-evening: #2A1E18;
+  --color-on-dark: #F2F1EB;
+  --color-on-dark-soft: rgb(242 241 235 / .74);
+  --color-on-dark-muted: rgb(242 241 235 / .86);
+  --color-rule: rgb(51 51 51 / .18);
+  --color-rule-dark: rgb(242 241 235 / .24);
+  --color-shade: rgb(7 19 26 / .78);
+  --color-shade-soft: rgb(7 19 26 / 0);
+
+  /* type */
+  --font-serif: "EB Garamond", "Iowan Old Style", Georgia, serif;
+  --font-sans: "Jost", "Avenir Next", system-ui, sans-serif;
+
+  --text-display: clamp(1.875rem, 3.2vw, 3.25rem);
+  --text-display--line-height: 1.04;
+  --text-display--letter-spacing: .02em;
+  --text-h2: clamp(1.625rem, 2.6vw, 2.625rem);
+  --text-h2--line-height: 1.1;
+  --text-h2--letter-spacing: .03em;
+  --text-tier: clamp(4.25rem, 10vw, 10rem);
+  --text-tier--line-height: .86;
+  --text-tier--letter-spacing: .01em;
+  --text-lede: clamp(1.1875rem, 1.6vw, 1.5rem);
+  --text-lede--line-height: 1.35;
+  --text-quote: clamp(1.625rem, 3vw, 2.75rem);
+  --text-quote--line-height: 1.25;
+  --text-price: clamp(2.5rem, 4vw, 3.75rem);
+  --text-price--line-height: 1;
+  --text-step: clamp(1.375rem, 1.8vw, 1.75rem);
+  --text-body: clamp(1.0625rem, 1.1vw, 1.1875rem);
+  --text-body--line-height: 1.65;
+  --text-ui: .9375rem;
+  --text-ui--letter-spacing: .02em;
+  --text-fine: .875rem;
+  --text-fine--line-height: 1.5;
+  --text-wordmark: 1.375rem;
+  --text-wordmark--letter-spacing: .32em;
+  --text-menu: clamp(2.25rem, 6vw, 4.5rem);
+
+  /* space & layout */
+  --spacing: .25rem;
+  --pad-x: clamp(1.25rem, 5.2vw, 4.75rem);
+  --space-section: clamp(7rem, 14vw, 15rem);
+  --space-block: clamp(3rem, 5vw, 4.75rem);
+  --space-gutter: 1.25rem;
+  --container-page: 67.5rem;
+  --container-text: 44rem;
+  --header-h: 5.5rem;
+  --header-h-compact: 4rem;
+  --bar-h: 3.75rem;
+  --radius-none: 0;
+
+  /* the day: where the dusk blend sits inside the evening band */
+  --dusk-at: 3vh;
+  --evening-at: 24vh;
+
+  /* motion */
+  --ease-out-expo: cubic-bezier(.16, 1, .3, 1);
+  --ease-in-out-power: cubic-bezier(.65, 0, .35, 1);
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+body {
+  margin: 0;
+  background: var(--color-bone);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  font-weight: 300;
+  font-size: var(--text-body);
+  line-height: var(--text-body--line-height);
+  -webkit-font-smoothing: antialiased;
+}
+img { display: block; max-width: 100%; height: auto; }
+a { color: inherit; }
+h1, h2, h3, p, ul, ol, figure, dl, dd { margin: 0; padding: 0; }
+ul, ol { list-style: none; }
+section[id] { scroll-margin-top: var(--header-h-compact); }
+:focus-visible { outline: 1px solid currentColor; outline-offset: 4px; }
+.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+/* ---------- shared type ---------- */
+.caps {
+  font-family: var(--font-serif);
+  text-transform: uppercase;
+  font-weight: 400;
+  text-wrap: balance;
+}
+.h2 {
+  font-size: var(--text-h2);
+  line-height: var(--text-h2--line-height);
+  letter-spacing: var(--text-h2--letter-spacing);
+}
+.lede {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: var(--text-lede);
+  line-height: var(--text-lede--line-height);
+  text-wrap: balance;
+}
+.fine { font-size: var(--text-fine); line-height: var(--text-fine--line-height); }
+.num { font-variant-numeric: lining-nums tabular-nums; }
+
+/* ---------- actions ---------- */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  min-height: 3rem; padding: 0 1.75rem;
+  font-family: var(--font-sans); font-weight: 400;
+  font-size: var(--text-ui); letter-spacing: var(--text-ui--letter-spacing);
+  text-decoration: none; border-radius: var(--radius-none);
+  border: 1px solid transparent;
+  transition: background-color .3s, color .3s, border-color .3s;
+}
+.btn--light { background: var(--color-bone); color: var(--color-ink); }
+.btn--light:hover { background: var(--color-flame); }
+.btn--ink { background: var(--color-ink); color: var(--color-bone); }
+.btn--ink:hover { background: var(--color-night); }
+.link {
+  font-size: var(--text-ui); letter-spacing: var(--text-ui--letter-spacing);
+  text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: .35em;
+  display: inline-flex; align-items: center; min-height: 2.75rem;
+}
+.link:hover { text-decoration-color: transparent; }
+
+/* ---------- header ---------- */
+.header {
+  position: fixed; inset: 0 0 auto; z-index: 40;
+  height: var(--header-h);
+  display: grid; grid-template-columns: 1fr auto 1fr; align-items: center;
+  padding: 0 var(--pad-x);
+  color: var(--color-on-dark);
+  transition: height .4s var(--ease-out-expo), background-color .4s, color .4s;
+}
+.header::after {
+  content: ""; position: absolute; inset: auto 0 0; height: 1px;
+  background: var(--color-rule); opacity: 0; transition: opacity .4s;
+}
+.header.is-solid { height: var(--header-h-compact); background: var(--color-bone); color: var(--color-ink); }
+.header.is-solid::after { opacity: 1; }
+.header__left, .header__right { display: flex; align-items: center; gap: 1.75rem; }
+.header__right { justify-content: flex-end; }
+.header__menu {
+  background: none; border: 0; padding: 0; color: inherit; cursor: pointer;
+  font: 400 var(--text-ui)/1 var(--font-sans); letter-spacing: var(--text-ui--letter-spacing);
+  min-height: 2.75rem; min-width: 2.75rem; text-align: left;
+}
+.header__lang { font-size: var(--text-ui); text-decoration: none; opacity: .8; min-height: 2.75rem; display: inline-flex; align-items: center; }
+.header__lang [aria-current] { text-decoration: underline; text-underline-offset: .35em; text-decoration-thickness: 1px; }
+.header__link { font-size: var(--text-ui); text-decoration: none; letter-spacing: var(--text-ui--letter-spacing); }
+.header:not(.is-solid) .header__link { visibility: hidden; }
+.header__link:hover { text-decoration: underline; text-underline-offset: .35em; text-decoration-thickness: 1px; }
+.wordmark {
+  font-family: var(--font-serif); font-weight: 400;
+  font-size: var(--text-wordmark); letter-spacing: var(--text-wordmark--letter-spacing);
+  text-transform: uppercase; text-decoration: none; margin-right: calc(var(--text-wordmark--letter-spacing) * -1);
+}
+.header .btn { min-height: 2.5rem; padding: 0 1.25rem; }
+.header.is-solid .btn--light { background: var(--color-ink); color: var(--color-bone); }
+@media (max-width: 760px) {
+  .header__lang, .header__link { display: none; }
+  .header .btn { padding: 0 .9rem; }
+  .wordmark { font-size: 1.125rem; }
+}
+
+/* ---------- hero ---------- */
+.hero {
+  position: relative; min-height: 100svh;
+  display: flex; flex-direction: column; justify-content: flex-end;
+  color: var(--color-on-dark); background: var(--color-night);
+  overflow: hidden; isolation: isolate;
+}
+.hero__media { position: absolute; inset: 0; z-index: -1; }
+.hero__media img { width: 100%; height: 100%; object-fit: cover; object-position: 45% 50%; }
+.hero__media::after {
+  content: ""; position: absolute; inset: 0;
+  background:
+    linear-gradient(90deg, var(--color-shade) 0%, var(--color-shade-soft) 58%),
+    linear-gradient(0deg, var(--color-shade) 0%, var(--color-shade-soft) 45%);
+}
+.hero__body {
+  padding: 0 var(--pad-x) clamp(2.5rem, 6vh, 4.5rem);
+  max-width: 46rem;
+}
+.hero h1 {
+  font-family: var(--font-serif); font-weight: 500; text-transform: uppercase;
+  font-size: var(--text-display); line-height: var(--text-display--line-height);
+  letter-spacing: var(--text-display--letter-spacing);
+  text-wrap: balance;
+}
+.hero h1 .line { display: block; }
+@media (min-width: 761px) {
+  .hero h1 .line { white-space: nowrap; }
+  .hero__body { max-width: none; }
+  .hero__offer { max-width: 37rem; }
+}
+.hero__lede { margin-top: 1rem; max-width: 34rem; }
+.hero__price { margin-top: 1.75rem; display: flex; align-items: baseline; gap: .9rem; flex-wrap: wrap; }
+.hero__price strong {
+  font-family: var(--font-serif); font-weight: 400;
+  font-size: clamp(1.75rem, 2.4vw, 2.25rem); line-height: 1;
+}
+.hero__price span { font-size: var(--text-ui); color: var(--color-on-dark-soft); }
+.hero__actions { margin-top: 1.5rem; display: flex; align-items: center; gap: 1.75rem; flex-wrap: wrap; }
+.hero__facts {
+  margin-top: 2rem; padding-top: 1.1rem; border-top: 1px solid var(--color-rule-dark);
+  display: flex; flex-wrap: wrap; gap: .35rem 2rem;
+  font-size: var(--text-fine); color: var(--color-on-dark-soft); letter-spacing: .02em;
+}
+@media (max-width: 760px) {
+  .hero__media img { object-position: 50% 50%; }
+  .hero__media::after {
+    background:
+      linear-gradient(180deg, var(--color-shade) 0%, var(--color-shade-soft) 38%),
+      linear-gradient(0deg, var(--color-shade) 0%, var(--color-shade-soft) 55%);
+  }
+  .hero__body { display: flex; flex-direction: column; flex: 1; padding-top: calc(var(--header-h) + .25rem); padding-bottom: 1.5rem; }
+  .hero__top { flex: 1; }
+  .hero__lede { margin-top: .75rem; }
+  .hero__price { margin-top: 0; }
+  .hero__actions { margin-top: 1rem; gap: 1.25rem; }
+  .hero__actions .btn--light { flex: 1; }
+  .hero__facts { margin-top: 1.1rem; padding-top: .8rem; gap: .1rem 1.25rem; }
+}
+
+/* ---------- layout helpers ---------- */
+.wrap { max-width: var(--container-page); margin-inline: auto; }
+.center { text-align: center; max-width: var(--container-text); margin-inline: auto; }
+.center .lede { margin-top: 1rem; }
+.center p + p { margin-top: 1.1rem; }
+.center .body { margin-top: 1.5rem; color: var(--color-ink-soft); }
+.center .link { margin-top: 1rem; }
+.media { position: relative; overflow: hidden; background: var(--color-night); }
+.media img { width: 100%; height: 100%; object-fit: cover; }
+.r-45 { aspect-ratio: 4 / 5; }
+.r-11 { aspect-ratio: 1 / 1; }
+.r-32 { aspect-ratio: 3 / 2; }
+.r-169 { aspect-ratio: 16 / 9; }
+
+/* ---------- intro ---------- */
+.intro { padding: var(--space-section) var(--pad-x) 0; }
+.facts {
+  margin-top: var(--space-block);
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--space-gutter);
+}
+.facts li { border-top: 1px solid var(--color-rule); padding-top: 1.1rem; }
+.facts b { display: block; font: 400 1.375rem/1.2 var(--font-serif); margin-bottom: .4rem; }
+.facts span { display: block; font-size: var(--text-fine); line-height: var(--text-fine--line-height); color: var(--color-ink-soft); max-width: 15rem; }
+@media (max-width: 900px) { .facts { grid-template-columns: 1fr 1fr; row-gap: 2rem; } }
+
+/* ---------- the space ---------- */
+.space { padding: var(--space-section) var(--pad-x) 0; }
+.stagger { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-gutter); align-items: start; }
+.stagger__col { display: grid; gap: var(--space-gutter); }
+.stagger__col--low { margin-top: clamp(4rem, 12vw, 11rem); }
+.space__text { margin-top: clamp(3.5rem, 5vw, 4.75rem); }
+.space__band { margin-top: var(--space-section); }
+@media (max-width: 760px) {
+  .stagger, .stagger__col { gap: .5rem; }
+}
+
+/* ---------- 24 hours (signature) ---------- */
+.day { margin-top: var(--space-section); position: relative; }
+.day__intro { padding: 0 var(--pad-x) clamp(4rem, 8vw, 7rem); }
+.day__from { margin-top: 2.25rem; display: flex; flex-direction: column; align-items: center; gap: .5rem; }
+.day__from strong { font: 400 var(--text-price)/var(--text-price--line-height) var(--font-serif); }
+.day__from span { font-size: var(--text-ui); color: var(--color-ink-soft); }
+.day__note { margin-top: 1.25rem; color: var(--color-ink-soft); font-size: var(--text-body); line-height: var(--text-body--line-height); max-width: 34rem; margin-inline: auto; }
+
+.day__body { display: grid; grid-template-columns: 1fr; position: relative; }
+
+.day__aside, .band { grid-column: 1; }
+.day__aside { grid-row: 1 / span 4; z-index: 3; pointer-events: none; }
+.day__aside-inner { pointer-events: auto; }
+
+.band { position: relative; min-height: 72vh; color: var(--color-ink); }
+.band > * { position: relative; z-index: 2; }
+.band[data-tier="morning"] { background: linear-gradient(180deg, var(--color-bone) 0%, var(--color-morning) 30%, var(--color-morning) 100%); }
+.band[data-tier="day"] { background: linear-gradient(180deg, var(--color-morning) 0%, var(--color-day) 32%, var(--color-day) 100%); }
+.band[data-tier="evening"] { background: linear-gradient(180deg, var(--color-day) 0, var(--color-dusk) var(--dusk-at), var(--color-evening) var(--evening-at), var(--color-evening) 100%); color: var(--color-on-dark); }
+.band[data-tier="night"] { background: linear-gradient(180deg, var(--color-evening) 0%, var(--color-night) 34%, var(--color-night) 100%); color: var(--color-on-dark); }
+
+.band__inner {
+  min-height: 72vh;
+  display: flex; flex-direction: column; justify-content: center;
+  padding: 12vh var(--pad-x) 10vh calc(var(--pad-x) + 28%);
+}
+.band[data-tier="evening"] .band__inner { padding-top: 16vh; }
+.band__name {
+  font: 400 var(--text-tier)/var(--text-tier--line-height) var(--font-serif);
+  letter-spacing: var(--text-tier--letter-spacing);
+  text-transform: uppercase;
+  margin-left: -.04em;
+}
+.band__row { margin-top: clamp(2rem, 4vw, 3.5rem); display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr); gap: clamp(2rem, 4vw, 4rem); align-items: start; }
+.band__text { padding-top: clamp(1rem, 6vh, 4rem); }
+.band__text p + p { margin-top: 1rem; }
+.band__text .link { margin-top: 1.25rem; }
+.band__text p:not(.lede) { max-width: 24rem; opacity: .82; }
+.band__photo { max-width: 22rem; justify-self: end; width: 100%; }
+/* Morning: tight on the rain head (clear of the smear on the glass), lifted to read as first light */
+.band__photo img[data-crop="rain"] { transform: scale(2); transform-origin: 28% 12%; filter: brightness(1.08) saturate(.9); }
+
+.day__aside-inner {
+  position: sticky; top: var(--header-h-compact);
+  height: calc(100vh - var(--header-h-compact));
+  width: calc(28% + var(--pad-x) - 2rem);
+  padding: 4rem 0 3.5rem var(--pad-x);
+  display: flex; flex-direction: column; justify-content: space-between;
+}
+.aside__price > * { color: var(--color-ink); transition: color .6s, background-color .6s; }
+.aside__price > .is-dark { color: var(--color-on-dark); }
+.rail { display: grid; gap: .35rem; }
+.rail a {
+  font: 400 1.5rem/1.2 var(--font-serif); text-decoration: none;
+  color: var(--color-ink-soft); transition: color .6s;
+  display: inline-flex; align-items: center; gap: .75rem; min-height: 2.75rem;
+}
+.rail a::before { content: ""; width: 1.5rem; height: 1px; background: currentColor; transform: scaleX(0); transform-origin: left; transition: transform .6s var(--ease-out-expo); }
+.rail a.is-dark { color: var(--color-on-dark-muted); }
+.rail a[aria-current="true"] { color: var(--color-ink); }
+.rail a.is-dark[aria-current="true"] { color: var(--color-on-dark); }
+.rail a[aria-current="true"]::before { transform: scaleX(1); }
+.aside__price strong { display: block; font: 400 2rem/1.1 var(--font-serif); }
+.aside__price p { margin-top: .6rem; max-width: 17rem; }
+.aside__price .btn { margin-top: 1.5rem; background: var(--color-ink); color: var(--color-bone); }
+.aside__price .btn.is-dark { background: var(--color-bone); color: var(--color-ink); }
+.aside__price .btn:hover { background: var(--color-flame); color: var(--color-ink); }
+
+.day[data-tier="morning"] { --rail-bg: var(--color-morning); }
+.day[data-tier="day"] { --rail-bg: var(--color-day); }
+.day[data-tier="evening"] { --rail-bg: var(--color-evening); }
+.day[data-tier="night"] { --rail-bg: var(--color-night); }
+
+.day__outro { background: var(--color-night); color: var(--color-on-dark-soft); padding: 0 var(--pad-x) clamp(4rem, 8vw, 7rem) calc(var(--pad-x) + 28%); }
+.day__outro p { max-width: 30rem; padding-top: 1.25rem; border-top: 1px solid var(--color-rule-dark); }
+
+@media (max-width: 900px) {
+  .day__aside-inner {
+    height: auto; width: auto; padding: 0;
+    background: var(--rail-bg, var(--color-morning));
+    transition: color .6s, background-color .6s;
+    border-bottom: 1px solid var(--color-rule);
+  }
+  .day[data-tier="evening"] .day__aside-inner, .day[data-tier="night"] .day__aside-inner { border-bottom-color: var(--color-rule-dark); }
+  .rail { display: flex; justify-content: space-between; padding: 0 var(--pad-x); }
+  .rail a { font-size: 1.125rem; }
+  .rail a::before { display: none; }
+  .rail a[aria-current="true"] { text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: .3em; }
+  .aside__price { display: none; }
+  .band__inner { padding: 5.5rem var(--pad-x) 3.5rem; min-height: auto; }
+  .band[data-tier="evening"] .band__inner, .band[data-tier="night"] .band__inner { padding-top: 7rem; }
+  .band { min-height: auto; }
+  .band__row { grid-template-columns: 1fr; gap: 1.75rem; }
+  .band__photo { max-width: none; order: -1; aspect-ratio: 3 / 2; }
+  .band__photo img[data-crop="rain"] { transform: scale(1.5); transform-origin: 30% 20%; }
+  .band__text { padding-top: 0; }
+  .day__outro { padding-left: var(--pad-x); }
+}
+
+/* ---------- add-ons (night continues) ---------- */
+.addons { background: var(--color-night); color: var(--color-on-dark); padding: clamp(2rem, 4vw, 4rem) var(--pad-x) var(--space-section); }
+.split { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-gutter) clamp(2rem, 6vw, 6.5rem); align-items: center; }
+.split__text .lede { margin-top: 1rem; }
+.split--flip .split__media { order: 2; }
+.list { margin-top: 2.25rem; border-top: 1px solid var(--color-rule-dark); }
+.list li { display: grid; grid-template-columns: 11rem 1fr; gap: 1rem; padding: 1rem 0; border-bottom: 1px solid var(--color-rule-dark); }
+.list b { font: 400 1.3125rem/1.3 var(--font-serif); }
+.list span { color: var(--color-on-dark-soft); font-size: var(--text-fine); line-height: var(--text-fine--line-height); padding-top: .2rem; }
+.addons .fine { margin-top: 1.25rem; color: var(--color-on-dark-soft); }
+@media (max-width: 760px) {
+  .split { grid-template-columns: 1fr; gap: 2.5rem; }
+  .split--flip .split__media { order: 0; }
+  .list li { grid-template-columns: 1fr; gap: .15rem; }
+}
+
+/* ---------- how it works ---------- */
+.how { padding: var(--space-section) var(--pad-x) 0; }
+.steps { margin-top: 2.25rem; display: grid; gap: 1.75rem; counter-reset: step; }
+.steps li { display: grid; grid-template-columns: 2.5rem 1fr; gap: .25rem 1rem; }
+.steps li::before {
+  counter-increment: step; content: counter(step);
+  font: 400 var(--text-step)/1.1 var(--font-serif); font-variant-numeric: lining-nums;
+  grid-row: 1 / span 2; color: var(--color-ink-soft);
+}
+.steps b { font: 400 var(--text-step)/1.15 var(--font-serif); }
+.steps span { color: var(--color-ink-soft); max-width: 26rem; }
+
+/* ---------- occasions ---------- */
+.occasions { padding: var(--space-section) var(--pad-x) 0; }
+.quote { font: 400 var(--text-quote)/var(--text-quote--line-height) var(--font-serif); text-wrap: balance; max-width: 50rem; margin-inline: auto; text-align: center; }
+.quote em { font-style: italic; }
+.occasions .fine { margin-top: 1.75rem; text-align: center; color: var(--color-ink-soft); }
+
+/* ---------- voucher ---------- */
+.voucher { padding: var(--space-section) var(--pad-x) 0; }
+.voucher .center { margin-top: clamp(3rem, 5vw, 4.75rem); }
+.voucher .btn { margin-top: 2rem; }
+
+/* ---------- faq ---------- */
+.faq { padding: var(--space-section) var(--pad-x) 0; }
+.faq__list { max-width: var(--container-text); margin: var(--space-block) auto 0; border-top: 1px solid var(--color-rule); }
+.faq details { border-bottom: 1px solid var(--color-rule); }
+.faq summary {
+  list-style: none; cursor: pointer;
+  display: flex; justify-content: space-between; align-items: center; gap: 1.5rem;
+  padding: 1.25rem 0; min-height: 3.5rem;
+  font: 400 1.3125rem/1.3 var(--font-serif);
+}
+.faq summary::-webkit-details-marker { display: none; }
+.faq summary::after { content: "+"; font: 300 1.5rem/1 var(--font-sans); transition: transform .3s; flex: none; }
+.faq details[open] summary::after { transform: rotate(45deg); }
+.faq details p { padding: 0 2.5rem 1.5rem 0; color: var(--color-ink-soft); }
+
+/* ---------- final booking band ---------- */
+.final { margin-top: var(--space-section); position: relative; background: var(--color-night); min-height: 88vh; display: flex; align-items: flex-end; color: var(--color-on-dark); isolation: isolate; overflow: hidden; }
+.final__media { position: absolute; inset: 0; z-index: -1; }
+.final__media img { width: 100%; height: 100%; object-fit: cover; object-position: 60% 50%; }
+.final__media::after { content: ""; position: absolute; inset: 0; background: linear-gradient(0deg, var(--color-night) 0%, var(--color-shade-soft) 22%), linear-gradient(90deg, var(--color-shade) 0%, var(--color-shade-soft) 60%), linear-gradient(0deg, var(--color-shade) 0%, var(--color-shade-soft) 50%); }
+@media (max-width: 760px) {
+  .final__media img { object-position: 85% 40%; }
+  .final__media::after { background: linear-gradient(0deg, var(--color-night) 0%, var(--color-shade) 55%, var(--color-shade-soft) 85%); }
+}
+.final__body { padding: 0 var(--pad-x) clamp(3rem, 8vh, 5.5rem); max-width: 40rem; }
+.final .lede { margin-top: 1rem; max-width: 26rem; }
+.final .hero__actions { margin-top: 2rem; }
+
+/* ---------- footer ---------- */
+.footer { background: var(--color-night); color: var(--color-on-dark-soft); padding: clamp(4rem, 7vw, 6rem) var(--pad-x) calc(2.5rem + var(--bar-h)); font-size: var(--text-fine); line-height: var(--text-fine--line-height); }
+.footer__grid { display: grid; grid-template-columns: 1.4fr 1fr 1fr 1fr; gap: 2rem; }
+.footer .wordmark { color: var(--color-on-dark); display: inline-block; margin-bottom: 1rem; }
+.footer h3 { font: 400 1.125rem/1.3 var(--font-serif); color: var(--color-on-dark); margin-bottom: .6rem; }
+.footer a { text-decoration: none; display: inline-flex; min-height: 2rem; align-items: center; }
+.footer a:hover { color: var(--color-on-dark); text-decoration: underline; text-underline-offset: .3em; }
+.footer__legal { margin-top: 3.5rem; padding-top: 1.25rem; border-top: 1px solid var(--color-rule-dark); display: flex; flex-wrap: wrap; align-items: baseline; gap: .5rem 2rem; }
+@media (max-width: 760px) { .footer__grid { grid-template-columns: 1fr 1fr; } .footer__grid > :first-child { grid-column: 1 / -1; } }
+
+/* ---------- floating WhatsApp (desktop) + sticky bar (mobile) ---------- */
+.wa {
+  position: fixed; right: var(--pad-x); bottom: 2rem; z-index: 30;
+  display: inline-flex; align-items: center; gap: .6rem;
+  height: 3rem; padding: 0 1.1rem;
+  background: var(--color-night); color: var(--color-on-dark);
+  font-size: var(--text-ui); letter-spacing: var(--text-ui--letter-spacing); text-decoration: none;
+  border: 1px solid var(--color-rule-dark);
+  opacity: 0; transform: translateY(1rem); transition: opacity .4s, transform .4s var(--ease-out-expo), background-color .3s;
+}
+.wa:hover { background: var(--color-evening); }
+.wa svg { width: 1.125rem; height: 1.125rem; }
+.is-past-hero .wa { opacity: 1; transform: none; }
+.is-past-hero .wa.is-tucked { opacity: 0; transform: translateY(1rem); pointer-events: none; }
+.bar { display: none; }
+@media (max-width: 760px) {
+  .wa { display: none; }
+  .bar {
+    position: fixed; inset: auto 0 0; z-index: 30;
+    display: grid; grid-template-columns: 1fr 2fr;
+    height: calc(var(--bar-h) + env(safe-area-inset-bottom)); padding-bottom: env(safe-area-inset-bottom);
+    background: var(--color-bone); border-top: 1px solid var(--color-rule);
+    transform: translateY(100%); transition: transform .45s var(--ease-out-expo);
+  }
+  .is-past-hero .bar { transform: none; }
+  .bar a { display: flex; align-items: center; justify-content: center; gap: .5rem; text-decoration: none; font-size: var(--text-ui); letter-spacing: var(--text-ui--letter-spacing); }
+  .bar a + a { background: var(--color-ink); color: var(--color-bone); }
+  .bar svg { width: 1.125rem; height: 1.125rem; }
+}
+
+/* ---------- menu ---------- */
+.menu {
+  position: fixed; inset: 0; z-index: 50;
+  background: var(--color-night); color: var(--color-on-dark);
+  display: flex; flex-direction: column; justify-content: space-between;
+  padding: 0 var(--pad-x) 2.5rem;
+  clip-path: inset(0 0 100% 0); visibility: hidden;
+  transition: clip-path .55s var(--ease-in-out-power), visibility 0s .55s;
+}
+.menu.is-open { clip-path: inset(0); visibility: visible; transition: clip-path .55s var(--ease-in-out-power), visibility 0s; }
+.menu__top { height: var(--header-h); display: flex; align-items: center; justify-content: space-between; }
+.menu__close { background: none; border: 0; color: inherit; font: 400 var(--text-ui)/1 var(--font-sans); letter-spacing: var(--text-ui--letter-spacing); cursor: pointer; min-height: 2.75rem; padding: 0; }
+.menu__links a { display: block; padding: .15em 0; font: 400 var(--text-menu)/1.12 var(--font-serif); text-transform: uppercase; letter-spacing: .02em; text-decoration: none; }
+.menu__links a:hover { color: var(--color-flame); }
+.menu__foot { display: flex; flex-wrap: wrap; gap: 1rem 2rem; align-items: center; }
+.menu__foot .link { color: var(--color-on-dark-soft); }
+@media (prefers-reduced-motion: reduce) { .menu, .menu.is-open { transition: none; } .day__aside-inner, .rail a { transition: none; } }
+</style>
+</head>
+<body>
+
+<header class="header" id="top" data-section="header">
+  <div class="header__left">
+    <button class="header__menu" type="button" aria-expanded="false" aria-controls="menu">Menu</button>
+    <a class="header__lang" href="#lang-cs-TODO" data-placeholder="cs locale not built in the prototype"><span class="sr-only">Language: </span><span aria-current="true">EN</span>&nbsp;/&nbsp;CS</a>
+  </div>
+  <a class="wordmark" href="#top" aria-label="Lumen Private Spa, back to top" data-placeholder="working brand name">Lumen</a>
+  <div class="header__right">
+    <a class="header__link" href="#voucher">Gift voucher</a>
+    <a class="btn btn--light" href="#booking-TODO" data-placeholder="external booking calendar URL (Reservio or similar)">Book a slot</a>
+  </div>
+</header>
+
+<main>
+<section class="hero" id="hero" data-section="hero">
+  <picture class="hero__media">
+    <source media="(max-width: 760px)" srcset="../../media/temp/hero-tall-2.jpg" width="1536" height="2752">
+    <img src="../../media/temp/hero-3.jpg" width="2752" height="1536" alt="Two people seen from behind in a candle-lit stone jacuzzi, steam rising (temporary image)" fetchpriority="high" data-placeholder="AI-generated temporary photo, not the real premises">
+  </picture>
+  <div class="hero__body">
+    <div class="hero__top">
+      <h1><span class="line">A whole spa,</span> <span class="line">just for the two of you</span></h1>
+      <p class="hero__lede lede">Private sauna, jacuzzi and relax room in Prague. Nobody else inside, day or night.</p>
+    </div>
+    <div class="hero__offer">
+      <p class="hero__price"><strong class="num" data-placeholder="SAMPLE price">from 1 990 Kč</strong><span>2 hours for two</span></p>
+      <div class="hero__actions">
+        <a class="btn btn--light" href="#booking-TODO" data-placeholder="external booking calendar URL">Book a slot</a>
+        <a class="link" href="#voucher">Give it as a gift</a>
+      </div>
+      <ul class="hero__facts">
+        <li>Open 24/7, night slots too</li>
+        <li>Towels, robes, slippers included</li>
+        <li>18+</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="intro" id="intro" data-section="facts">
+  <div class="center">
+    <h2 class="caps h2">Nobody else inside</h2>
+    <p class="body">For two or three hours the whole spa is yours: sauna, jacuzzi, relax room and shower, behind one door that only your code opens. No reception, no other guests, nothing to bring.</p>
+  </div>
+  <ul class="facts wrap">
+    <li><b>Just the two of you</b><span>The whole space for your slot. Nobody else is booked in with you.</span></li>
+    <li><b>Open 24/7</b><span>Morning, day, evening and night slots, every day of the week.</span></li>
+    <li><b>Bring nothing</b><span>Towels, bathrobes and slippers are ready for every guest.</span></li>
+    <li><b>Adults only</b><span>Lumen is for guests aged 18 and over.</span></li>
+  </ul>
+</section>
+
+<section class="space" id="space" data-section="space">
+  <div class="wrap">
+    <div class="stagger">
+      <div class="stagger__col">
+        <figure class="media r-45 reveal"><img src="../../media/temp/sauna-2.jpg" width="928" height="1152" decoding="async" alt="Empty sauna with wooden benches and a soft light strip under the top bench (temporary image)" data-placeholder="AI-generated temporary photo"></figure>
+        <figure class="media r-11 reveal"><img src="../../media/temp/water-1.jpg" width="1024" height="1024" decoding="async" alt="A candle on the stone rim of the jacuzzi, its flame reflected in dark water (temporary image)" data-placeholder="AI-generated temporary photo"></figure>
+      </div>
+      <div class="stagger__col stagger__col--low">
+        <figure class="media r-45 reveal"><img src="../../media/temp/shower-1.jpg" width="928" height="1152" decoding="async" alt="Shower in dark stone behind misted glass (temporary image)" data-placeholder="AI-generated temporary photo"></figure>
+        <figure class="media r-11 reveal"><img src="../../media/temp/robes-1.jpg" width="928" height="1152" decoding="async" alt="Folded white bathrobes and towels on an oak bench, felt slippers below (temporary image)" style="object-position: 50% 62%" data-placeholder="AI-generated temporary photo"></figure>
+      </div>
+    </div>
+    <div class="center space__text">
+      <h2 class="caps h2">Everything behind one door</h2>
+      <p class="body">Heat up in the sauna, cool off in the shower, then sink into the warm jacuzzi. Towels, robes and slippers are ready when you arrive.</p>
+    </div>
+    <figure class="media r-32 space__band reveal"><img src="../../media/temp/relax-2.jpg" width="1264" height="848" decoding="async" alt="Two people in white robes resting on low loungers in a candle-lit relax room, seen from behind (temporary image)" data-placeholder="AI-generated temporary photo"></figure>
+    <div class="center space__text">
+      <h2 class="caps h2">The relax room</h2>
+      <p class="body">A quiet room to rest between rounds. Stay here as long as you like within your slot.</p>
+      <a class="link" href="#prices">See prices by time of day</a>
+    </div>
+  </div>
+</section>
+
+<section class="day" id="prices" data-section="plans" data-tier="morning">
+  <div class="day__intro center">
+    <h2 class="caps h2">Open around the clock</h2>
+    <p class="lede">Four times of day, four prices. Pick the light you like.</p>
+    <div class="day__from">
+      <strong class="num" data-placeholder="SAMPLE price">from 1 990 Kč</strong>
+      <span>2 hours for two</span>
+    </div>
+    <p class="day__note" data-placeholder="per-tier prices TODO">Morning, day, evening and night each have their own price. The exact price for your time is confirmed when you book.</p>
+  </div>
+
+  <div class="day__body">
+    <aside class="day__aside" aria-label="Times of day">
+      <div class="day__aside-inner">
+        <ol class="rail">
+          <li><a href="#tier-morning" aria-current="true">Morning</a></li>
+          <li><a href="#tier-day">Day</a></li>
+          <li><a href="#tier-evening">Evening</a></li>
+          <li><a href="#tier-night">Night</a></li>
+        </ol>
+        <div class="aside__price">
+          <strong class="num" data-placeholder="SAMPLE price">from 1 990 Kč</strong>
+          <p class="fine">2 hours for two. The exact price for each time of day is confirmed when you book.</p>
+          <a class="btn" href="#booking-TODO" data-placeholder="external booking calendar URL">Book a slot</a>
+        </div>
+      </div>
+    </aside>
+
+    <article class="band" id="tier-morning" data-tier="morning" style="grid-row: 1">
+      <div class="band__inner">
+        <h3 class="band__name">Morning</h3>
+        <div class="band__row">
+          <div class="band__text">
+            <p class="lede">Sauna first, the city later.</p>
+            <p>Heat, a cold shower and a slow start before the streets get loud.</p>
+            <a class="link" href="#booking-TODO" data-placeholder="external booking calendar URL">Book a morning slot</a>
+          </div>
+          <figure class="band__photo media r-45"><img data-crop="rain" src="../../media/temp/shower-2.jpg" width="928" height="1152" decoding="async" alt="Water falling from a round shower head against dark stone (temporary image)" data-placeholder="AI-generated temporary photo"></figure>
+        </div>
+      </div>
+    </article>
+
+    <article class="band" id="tier-day" data-tier="day" style="grid-row: 2">
+      <div class="band__inner">
+        <h3 class="band__name">Day</h3>
+        <div class="band__row">
+          <div class="band__text">
+            <p class="lede">A long lunch break, done properly.</p>
+            <p>Take an afternoon off together. The space is just as private at noon as at midnight.</p>
+            <a class="link" href="#booking-TODO" data-placeholder="external booking calendar URL">Book a daytime slot</a>
+          </div>
+          <figure class="band__photo media r-45"><img src="media/day-sauna-2.jpg" width="928" height="1152" decoding="async" alt="Pale wooden sauna benches in bright, even light, a bucket and ladle on the lower bench (temporary image)" data-placeholder="AI-generated temporary photo"></figure>
+        </div>
+      </div>
+    </article>
+
+    <article class="band" id="tier-evening" data-tier="evening" style="grid-row: 3">
+      <div class="band__inner">
+        <h3 class="band__name">Evening</h3>
+        <div class="band__row">
+          <div class="band__text">
+            <p class="lede">After work, before dinner.</p>
+            <p>Sauna, jacuzzi, then robes and a quiet hour in the relax room.</p>
+            <a class="link" href="#booking-TODO" data-placeholder="external booking calendar URL">Book an evening slot</a>
+          </div>
+          <figure class="band__photo media r-45"><img src="media/relax-empty-2.jpg" width="928" height="1152" decoding="async" alt="The empty relax room: two low daybeds and a stone side table under a warm wall lamp (temporary image)" data-placeholder="AI-generated temporary photo"></figure>
+        </div>
+      </div>
+    </article>
+
+    <article class="band" id="tier-night" data-tier="night" style="grid-row: 4">
+      <div class="band__inner">
+        <h3 class="band__name">Night</h3>
+        <div class="band__row">
+          <div class="band__text">
+            <p class="lede">When the city goes quiet.</p>
+            <p>Night slots run until morning. Your door code works at 2 a.m. just as it does at 2 p.m.</p>
+            <a class="link" href="#booking-TODO" data-placeholder="external booking calendar URL">Book a night slot</a>
+          </div>
+          <figure class="band__photo media r-45"><img src="media/night-candle-2.jpg" width="928" height="1152" decoding="async" alt="One candle on the stone edge of the jacuzzi, its flame reflected in black water (temporary image)" data-placeholder="AI-generated temporary photo"></figure>
+        </div>
+      </div>
+    </article>
+  </div>
+  <div class="day__outro">
+    <p class="fine" data-placeholder="3 h price, surcharge and max guests TODO">Staying three hours or coming with a friend? A longer slot and extra guests (for a surcharge per person) can be added when you book.</p>
+  </div>
+</section>
+
+<section class="addons" id="addons" data-section="addons">
+  <div class="wrap split">
+    <figure class="split__media media r-11"><img src="../../media/temp/addons-1.jpg" width="1024" height="1024" decoding="async" alt="A bottle in a brass bucket, two coupes and a plate of figs, grapes and pear on the stone edge of the jacuzzi (temporary image)" data-placeholder="AI-generated temporary photo"></figure>
+    <div class="split__text">
+      <h2 class="caps h2">Add a little more</h2>
+      <ul class="list">
+        <li><b>Prosecco</b><span>Something to toast with.</span></li>
+        <li><b>Fruit plate</b><span>Something light to share.</span></li>
+        <li><b data-placeholder="massage provider, length and lead time TODO">Massage</b><span>Ask for it when you book your slot.</span></li>
+        <li><b>An extra hour</b><span>Stay longer without rushing the last round.</span></li>
+      </ul>
+      <p class="fine" data-placeholder="add-on prices TODO">Add extras when you book. Their prices are confirmed at booking.</p>
+    </div>
+  </div>
+</section>
+
+<section class="how" id="how" data-section="how">
+  <div class="wrap split split--flip">
+    <figure class="split__media media r-45"><img src="../../media/temp/door-1.jpg" width="928" height="1152" decoding="async" alt="An unmarked wooden door in a courtyard passage at night, a small keypad glowing beside it (temporary image)" data-placeholder="AI-generated temporary photo, must not resemble the real address"></figure>
+    <div class="split__text">
+      <h2 class="caps h2">How it works</h2>
+      <ol class="steps">
+        <li><b>Pick a time</b><span>Choose a free slot in the online calendar.</span></li>
+        <li><b>Get your door code</b><span data-placeholder="code delivery channel and timing TODO">You get a personal door code for your booking.</span></li>
+        <li><b>Let yourselves in</b><span>Morning or 2 a.m., the code opens the door. Everything is ready inside.</span></li>
+        <li><b>Leave when you're done</b><span>Leave the robes and towels behind. We take care of the rest.</span></li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<section class="occasions" id="occasions" data-section="occasions">
+  <p class="quote">For an anniversary, a birthday, a girls' night out, <em>or a Tuesday that simply needed it.</em></p>
+  <p class="fine" data-placeholder="surcharge and max guests TODO">Coming as more than two? Extra guests can be added when you book.</p>
+</section>
+
+<section class="voucher" id="voucher" data-section="voucher">
+  <div class="wrap">
+    <figure class="media r-32 reveal"><img src="../../media/temp/voucher-2.jpg" width="1264" height="848" decoding="async" alt="A cream envelope tied with linen cord on a folded white robe, a candle beside it (temporary image)" data-placeholder="AI-generated temporary photo"></figure>
+    <div class="center">
+      <h2 class="caps h2">Give someone a night off</h2>
+      <p class="lede">A gift voucher for a private slot at Lumen.</p>
+      <p class="body" data-placeholder="voucher validity, format and delivery TODO">For someone who would never book it for themselves. Validity and terms are confirmed when you buy.</p>
+      <a class="btn btn--ink" href="#voucher-TODO" data-placeholder="voucher shop URL">Buy a gift voucher</a>
+    </div>
+  </div>
+</section>
+
+<section class="faq" id="faq" data-section="faq">
+  <div class="center">
+    <h2 class="caps h2">Before you come</h2>
+  </div>
+  <div class="faq__list">
+    <details><summary>What should we bring?</summary><p>Nothing. Towels, bathrobes and slippers are included for every guest.</p></details>
+    <details><summary>Is it really only us?</summary><p>Yes. During your slot the sauna, jacuzzi, relax room and shower are yours alone. Nobody else is booked in at the same time.</p></details>
+    <details><summary>Can we come at night?</summary><p>Yes. Lumen is open 24/7 and night slots are booked like any other. The free times are in the calendar.</p></details>
+    <details><summary>How do we get in?</summary><p data-placeholder="code delivery method TODO">You let yourselves in with a personal door code for your booking. How and when it reaches you is described in your booking confirmation.</p></details>
+    <details><summary>Is there an age limit?</summary><p>Yes, Lumen is for guests aged 18 and over.</p></details>
+    <details><summary>Can more than two of us come?</summary><p data-placeholder="surcharge and max guests TODO">Yes, for a surcharge per extra person. The amount and the maximum number of guests are confirmed when you book.</p></details>
+    <details><summary>What if we need to cancel?</summary><p data-placeholder="cancellation and deposit terms TODO">The cancellation terms are confirmed when you book.</p></details>
+    <details><summary>Is the sauna right for everyone?</summary><p data-placeholder="health wording to be confirmed by owner">If you are pregnant or have a heart or blood-pressure condition, please check with your doctor before using the sauna or hot tub.</p></details>
+  </div>
+</section>
+
+<section class="final" id="book" data-section="booking">
+  <div class="final__media"><img src="media/final-empty-1.jpg" width="2752" height="1536" decoding="async" alt="The empty stone jacuzzi at night, candles along the ledge and steam in front of a bronze mirror (temporary image)" data-placeholder="AI-generated temporary photo"></div>
+  <div class="final__body">
+    <h2 class="caps h2">Book the whole spa for two</h2>
+    <p class="lede">Free slots are in the calendar, day and night.</p>
+    <div class="hero__actions">
+      <a class="btn btn--light" href="#booking-TODO" data-placeholder="external booking calendar URL">Book a slot</a>
+      <a class="link" href="#whatsapp-TODO" data-placeholder="WhatsApp number">Ask us on WhatsApp</a>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="footer" data-section="footer">
+  <div class="footer__grid">
+    <div>
+      <a class="wordmark" href="#top" data-placeholder="working brand name">Lumen</a>
+      <p>Private spa for two in Prague.<br>Open 24 hours, 7 days a week.</p>
+    </div>
+    <div>
+      <h3>Visit</h3>
+      <p data-placeholder="address TODO">Prague</p>
+      <a href="#map-TODO" data-placeholder="map link">Open in maps</a>
+    </div>
+    <div>
+      <h3>Contact</h3>
+      <a href="#whatsapp-TODO" data-placeholder="WhatsApp number">WhatsApp</a><br>
+      <a href="#email-TODO" data-placeholder="SAMPLE email, domain unchecked">hello@lumenspa.cz</a><br>
+      <a href="#instagram-TODO" data-placeholder="Instagram handle">Instagram</a>
+    </div>
+    <div>
+      <h3>Book</h3>
+      <a href="#booking-TODO" data-placeholder="external booking calendar URL">Book a slot</a><br>
+      <a href="#voucher-TODO" data-placeholder="voucher shop URL">Gift vouchers</a><br>
+      <a href="#faq">Questions</a>
+    </div>
+  </div>
+  <div class="footer__legal">
+    <a href="#terms-TODO" data-placeholder="terms TODO">Terms</a>
+    <a href="#privacy-TODO" data-placeholder="privacy / GDPR text TODO">Privacy</a>
+    <a href="#cookies-TODO" data-placeholder="cookie text TODO">Cookies</a>
+    <a href="#lang-cs-TODO" data-placeholder="cs locale not built in the prototype">Česky</a>
+    <span>Photos on this page are temporary illustrations.</span>
+  </div>
+</footer>
+
+<a class="wa" href="#whatsapp-TODO" data-placeholder="WhatsApp number">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M4.5 19.5l1.1-3.6A8 8 0 1 1 8.3 18.6z"/></svg>
+  WhatsApp
+</a>
+
+<nav class="bar" aria-label="Quick actions">
+  <a href="#whatsapp-TODO" data-placeholder="WhatsApp number"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M4.5 19.5l1.1-3.6A8 8 0 1 1 8.3 18.6z"/></svg>WhatsApp</a>
+  <a href="#booking-TODO" data-placeholder="external booking calendar URL">Book a slot</a>
+</nav>
+
+<div class="menu" id="menu" role="dialog" aria-modal="true" aria-label="Menu">
+  <div class="menu__top">
+    <button class="menu__close" type="button">Close</button>
+    <a class="wordmark" href="#top">Lumen</a>
+    <a class="btn btn--light" href="#booking-TODO" data-placeholder="external booking calendar URL">Book a slot</a>
+  </div>
+  <nav class="menu__links" aria-label="Sections">
+    <a href="#space">The space</a>
+    <a href="#prices">Prices</a>
+    <a href="#addons">Extras</a>
+    <a href="#how">How it works</a>
+    <a href="#voucher">Gift vouchers</a>
+    <a href="#faq">Questions</a>
+  </nav>
+  <div class="menu__foot">
+    <a class="link" href="#whatsapp-TODO" data-placeholder="WhatsApp number">WhatsApp</a>
+    <a class="link" href="#email-TODO" data-placeholder="SAMPLE email, domain unchecked">hello@lumenspa.cz</a>
+    <a class="link" href="#lang-cs-TODO" data-placeholder="cs locale not built in the prototype"><span aria-current="true">EN</span>&nbsp;/&nbsp;CS</a>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/SplitText.min.js"></script>
+<script>
+(() => {
+  const root = document.documentElement;
+  const header = document.querySelector('.header');
+  const hero = document.querySelector('.hero');
+
+  /* header compact + sticky actions after the hero */
+  let ticking = false;
+  const onScroll = () => {
+    ticking = false;
+    const y = window.scrollY;
+    header.classList.toggle('is-solid', y > 24);
+    root.classList.toggle('is-past-hero', y > hero.offsetHeight * 0.6);
+  };
+  addEventListener('scroll', () => { if (!ticking) { ticking = true; requestAnimationFrame(onScroll); } }, { passive: true });
+  onScroll();
+
+  /* menu: open/close, Esc, focus trap */
+  const menu = document.getElementById('menu');
+  const openBtn = document.querySelector('.header__menu');
+  const closeBtn = menu.querySelector('.menu__close');
+  const focusables = () => [...menu.querySelectorAll('a, button')];
+  const openMenu = () => {
+    menu.classList.add('is-open'); openBtn.setAttribute('aria-expanded', 'true');
+    document.body.style.overflow = 'hidden';
+    setTimeout(() => closeBtn.focus(), 50);
+  };
+  const closeMenu = (returnFocus = true) => {
+    menu.classList.remove('is-open'); openBtn.setAttribute('aria-expanded', 'false');
+    document.body.style.overflow = '';
+    if (returnFocus) openBtn.focus();
+  };
+  openBtn.addEventListener('click', openMenu);
+  closeBtn.addEventListener('click', () => closeMenu());
+  menu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => closeMenu(false)));
+  document.addEventListener('keydown', e => {
+    if (!menu.classList.contains('is-open')) return;
+    if (e.key === 'Escape') closeMenu();
+    if (e.key === 'Tab') {
+      const f = focusables(), first = f[0], last = f[f.length - 1];
+      if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+      else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+    }
+  });
+
+  /* 24 hours: which time of day is on screen */
+  const day = document.querySelector('.day');
+  const bands = [...day.querySelectorAll('.band')];
+  const railLinks = [...day.querySelectorAll('.rail a')];
+  const setTier = tier => {
+    if (day.dataset.tier === tier) return;
+    day.dataset.tier = tier;
+    railLinks.forEach(a => a.setAttribute('aria-current', a.hash === '#tier-' + tier ? 'true' : 'false'));
+    if (typeof tone === 'function') tone();
+  };
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(en => { if (en.isIntersecting) setTier(en.target.dataset.tier); });
+  }, { rootMargin: '-50% 0px -50% 0px' });
+  bands.forEach(b => io.observe(b));
+
+  /* aside tone: light text only where the band behind it is already dark.
+     The flip point is where ink and bone contrast cross in the dusk blend,
+     just before the --dusk-at stop (~95% of it) at the top of the evening band. */
+  const rail = day.querySelector('.rail');
+  const asidePrice = day.querySelector('.aside__price');
+  const evening = day.querySelector('#tier-evening');
+  const night = day.querySelector('#tier-night');
+  const narrow = matchMedia('(max-width: 900px)');
+  let darkFrom = 0, darkTo = 0;
+  const measure = () => {
+    const y = scrollY;
+    const probe = document.createElement('div');
+    probe.style.cssText = 'position:absolute;visibility:hidden;height:var(--dusk-at)';
+    document.body.appendChild(probe); const duskAt = probe.offsetHeight; probe.remove();
+    darkFrom = evening.getBoundingClientRect().top + y + duskAt * .95;
+    darkTo = night.getBoundingClientRect().bottom + y;
+  };
+  const dayBody = day.querySelector('.day__body');
+  const tone = () => {
+    // above the bands, the section starts in the morning again
+    if (dayBody.getBoundingClientRect().top > innerHeight / 2 && day.dataset.tier !== 'morning') { setTier('morning'); return; }
+    const isDark = el => { const r = el.getBoundingClientRect(); const mid = r.top + r.height / 2 + scrollY; return mid > darkFrom && mid < darkTo; };
+    const tierDark = day.dataset.tier === 'evening' || day.dataset.tier === 'night';
+    railLinks.forEach(a => a.classList.toggle('is-dark', narrow.matches ? tierDark : isDark(a)));
+    [...asidePrice.children].forEach(el => el.classList.toggle('is-dark', isDark(el)));
+  };
+  measure(); tone();
+  addEventListener('resize', () => { measure(); tone(); });
+  addEventListener('load', () => { measure(); tone(); });
+  let toneTick = false;
+  addEventListener('scroll', () => { if (!toneTick) { toneTick = true; requestAnimationFrame(() => { toneTick = false; tone(); }); } }, { passive: true });
+
+  /* floating WhatsApp steps aside where it would sit on content that already offers it */
+  const wa = document.querySelector('.wa');
+  const covered = new Set();
+  const waIO = new IntersectionObserver(entries => {
+    entries.forEach(en => en.isIntersecting ? covered.add(en.target) : covered.delete(en.target));
+    wa.classList.toggle('is-tucked', covered.size > 0);
+  }, { rootMargin: '0px 0px -0px 0px' });
+  document.querySelectorAll('.facts, .day__body, .final, .footer').forEach(el => waIO.observe(el));
+
+  /* motion (only when allowed and GSAP is present) */
+  if (!window.gsap) return;
+  gsap.registerPlugin(ScrollTrigger, SplitText);
+  const mm = gsap.matchMedia();
+  mm.add('(prefers-reduced-motion: no-preference)', () => {
+    // load: photo settles, headline rises line by line, offer follows
+    const tl = gsap.timeline({ defaults: { ease: 'expo.out' } });
+    tl.from('.hero__media img', { scale: 1.06, duration: 2.4, ease: 'power2.out' }, 0);
+    let split;
+    document.fonts.ready.then(() => {
+      split = SplitText.create('.hero h1', { type: 'lines', mask: 'lines' });
+      gsap.from(split.lines, { yPercent: 110, duration: .95, stagger: .08, ease: 'expo.out', delay: .15 });
+    });
+    tl.from(['.hero__lede', '.hero__offer'], { opacity: 0, duration: 1.1, stagger: .12 }, .55);
+
+    // space grid: photos uncover once
+    gsap.utils.toArray('.reveal').forEach(el => {
+      gsap.fromTo(el, { clipPath: 'inset(12% 0 0 0)' }, { clipPath: 'inset(0% 0 0 0)', duration: 1.2, ease: 'power3.out',
+        scrollTrigger: { trigger: el, start: 'top 88%', once: true } });
+      gsap.fromTo(el.querySelector('img'), { scale: 1.08 }, { scale: 1, duration: 1.4, ease: 'power3.out',
+        scrollTrigger: { trigger: el, start: 'top 88%', once: true } });
+    });
+
+
+    return () => { split && split.revert(); };
+  });
+})();
+</script>
+</body>
+</html>

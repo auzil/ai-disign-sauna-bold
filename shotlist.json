@@ -1,0 +1,34 @@
+[
+  {
+    "id": "final-empty",
+    "use": "final booking band (16:9 full-bleed): the hero room, empty. Replaces hero-1 (ghost face in mirror, couple repeat). TEMPORARY.",
+    "prompt": "Same indoor private spa room as the reference photo: the same rectangular dark stone jacuzzi, the same bronze-tinted steamed mirror, the same row of candles in clear glass holders on the stone ledge. The room is empty: nobody in the water and nobody anywhere in the frame. Wide view from a low camera at water level; the dark stone wall fills the left 40 percent of the frame; black water in the foreground with the candle flames doubled as golden streaks; steam rising in front of the mirror. The mirror shows only steam and candle reflections, no faces, no figures, no silhouettes. Candlelight only, deep blue-black shadows, warm amber highlights, 35mm lens, quiet and calm",
+    "aspect": "16:9",
+    "size": "2K",
+    "count": 2,
+    "reference_images": ["media/temp/hero-3.jpg"]
+  },
+  {
+    "id": "day-sauna",
+    "use": "24 h band Day (4:5): the sauna in daytime light, high-key, so the Day band is not another night frame. TEMPORARY.",
+    "prompt": "Interior of a small Finnish sauna in a city spa in the daytime, pale aspen benches in two tiers, a wooden bucket and ladle on the lower bench beside a folded white linen towel. Even, bright warm-white light from a concealed ceiling strip, high-key, the pale aspen walls glowing light honey, soft open shadows, airy and clean. No candles, no visible windows, no people, empty. Camera at standing height just inside the door, 35mm lens, calm",
+    "aspect": "4:5",
+    "count": 2
+  },
+  {
+    "id": "relax-empty",
+    "use": "24 h band Evening (4:5): the relax room with nobody in it, lamp-lit. Replaces relax-1 (same couple as relax-2). TEMPORARY.",
+    "prompt": "Same relax room as the reference photo, but empty: no people anywhere. The same two oak daybeds with linen cushions and the dark crumpled linen throw, the same rough stone side table with two glasses of water and one lit candle in a clear glass, the same dark stone wall and timber posts. The wall lamp is on, casting a warm amber pool of light down the stone wall. Different framing from the reference: vertical, camera lower and closer, from the left at a three-quarter angle, the side table and one daybed in the foreground. Early-evening lamp light, warm amber highlights, deep blue-black shadows, calm, 35mm lens",
+    "aspect": "4:5",
+    "count": 2,
+    "reference_images": ["media/temp/relax-2.jpg"]
+  },
+  {
+    "id": "night-candle",
+    "use": "24 h band Night (4:5): one candle on the jacuzzi ledge, black water. Replaces water-2 (near-duplicate of water-1). TEMPORARY.",
+    "prompt": "Same dark stone jacuzzi as the reference photo, deep at night, no people. Close vertical detail from above at a steep angle: one single candle in a clear glass on the dark stone ledge, its flame reflected as one long golden streak in still black water, a thin wisp of steam. Everything else falls into blue-black darkness, about 75 percent of the frame near-black. 50mm lens, shallow depth of field, quiet",
+    "aspect": "4:5",
+    "count": 2,
+    "reference_images": ["media/temp/hero-3.jpg"]
+  }
+]
