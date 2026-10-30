@@ -92,6 +92,7 @@ body {
   font-size: var(--text-body);
   line-height: var(--text-body--line-height);
   -webkit-font-smoothing: antialiased;
+  overflow-x: clip; /* safety net: nothing may widen the page on narrow phones */
 }
 img { display: block; max-width: 100%; height: auto; }
 a { color: inherit; }
@@ -288,7 +289,7 @@ section[id] { scroll-margin-top: var(--header-h-compact); }
 .day__from span { font-size: var(--text-ui); color: var(--color-ink-soft); }
 .day__note { margin-top: 1.25rem; color: var(--color-ink-soft); font-size: var(--text-body); line-height: var(--text-body--line-height); max-width: 34rem; margin-inline: auto; }
 
-.day__body { display: grid; grid-template-columns: 1fr; position: relative; }
+.day__body { display: grid; grid-template-columns: minmax(0, 1fr); position: relative; }
 
 .day__aside, .band { grid-column: 1; }
 .day__aside { grid-row: 1 / span 4; z-index: 3; pointer-events: none; }
@@ -370,6 +371,8 @@ section[id] { scroll-margin-top: var(--header-h-compact); }
   .rail a[aria-current="true"] { text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: .3em; }
   .aside__price { display: none; }
   .band__inner { padding: 5.5rem var(--pad-x) 3.5rem; min-height: auto; }
+  /* "MORNING" at the 4.25rem minimum is ~347px wide: scale with the screen so it fits 360px phones */
+  .band__name { font-size: min(var(--text-tier), 16vw); }
   .band[data-tier="evening"] .band__inner, .band[data-tier="night"] .band__inner { padding-top: 7rem; }
   .band { min-height: auto; }
   .band__row { grid-template-columns: 1fr; gap: 1.75rem; }
