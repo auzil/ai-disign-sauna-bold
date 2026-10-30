@@ -97,3 +97,7 @@ Ordered as in the punch list. Verified at 390×844 and 1440×900 with full-page 
 - The four tier prices (owner question; bands keep only the booking link).
 - A rail line can still dip below 3:1 for roughly 24 px of scroll as the light-to-dusk ramp crosses it. This is the cost of a blended background behind fixed text. Removing it fully would need a hard edge or a backing behind the rail, and either would undo the blend the critique asked to protect.
 - The final band and the hero are the same room (hero with the couple, final empty). That is intentional now: it reads as "the same room, yours". It is no longer a repeated couple scene.
+
+## Manual review fixes
+
+- Rail links (Morning / Day / Evening / Night) no longer use plain anchor jumps, which landed each band's top under the header and mobile rail, at a different place per band (the evening/night bands have more top padding for the dusk blend). A click now scrolls the tier **name** to one fixed spot: compact header + sticky rail + 1.5rem on mobile (name at 133 px at 390), compact header + 12vh on desktop (172 px at 1440). The rail highlights the clicked tier straight away and doesn't flicker through the bands passed on the way; it resyncs with the band at the viewport middle when the scroll ends. Smooth scroll, instant with reduced motion. Checked by clicking all four in shuffled order at 390 and 1440, both motion modes.

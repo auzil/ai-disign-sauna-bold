@@ -871,7 +871,9 @@ section[id] { scroll-margin-top: var(--header-h-compact); }
     railLinks.forEach(a => a.setAttribute('aria-current', a.hash === '#tier-' + tier ? 'true' : 'false'));
     if (typeof tone === 'function') tone();
   };
+  let railJump = false; // true while a rail click scrolls, so passing bands don't flicker the rail
   const io = new IntersectionObserver(entries => {
+    if (railJump) return;
     entries.forEach(en => { if (en.isIntersecting) setTier(en.target.dataset.tier); });
   }, { rootMargin: '-50% 0px -50% 0px' });
   bands.forEach(b => io.observe(b));
@@ -896,7 +898,7 @@ section[id] { scroll-margin-top: var(--header-h-compact); }
   const dayBody = day.querySelector('.day__body');
   const tone = () => {
     // above the bands, the section starts in the morning again
-    if (dayBody.getBoundingClientRect().top > innerHeight / 2 && day.dataset.tier !== 'morning') { setTier('morning'); return; }
+    if (!railJump && dayBody.getBoundingClientRect().top > innerHeight / 2 && day.dataset.tier !== 'morning') { setTier('morning'); return; }
     const isDark = el => { const r = el.getBoundingClientRect(); const mid = r.top + r.height / 2 + scrollY; return mid > darkFrom && mid < darkTo; };
     const tierDark = day.dataset.tier === 'evening' || day.dataset.tier === 'night';
     railLinks.forEach(a => a.classList.toggle('is-dark', narrow.matches ? tierDark : isDark(a)));
@@ -907,6 +909,37 @@ section[id] { scroll-margin-top: var(--header-h-compact); }
   addEventListener('load', () => { measure(); tone(); });
   let toneTick = false;
   addEventListener('scroll', () => { if (!toneTick) { toneTick = true; requestAnimationFrame(() => { toneTick = false; tone(); }); } }, { passive: true });
+
+  /* rail links: land every tier name at the same spot — just under the compact header,
+     plus the sticky rail on mobile. Bands have different top padding (the dusk blend),
+     so the target is the name, not the band. */
+  const asideInner = day.querySelector('.day__aside-inner');
+  const rem = () => parseFloat(getComputedStyle(root).fontSize);
+  const headerH = () => parseFloat(getComputedStyle(root).getPropertyValue('--header-h-compact')) * rem();
+  const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)');
+  let jumpTimer;
+  const endJump = () => {
+    if (!railJump) return;
+    railJump = false; clearTimeout(jumpTimer);
+    // resync with the band at the viewport middle, as the observer would have
+    const mid = bands.find(b => { const r = b.getBoundingClientRect(); return r.top <= innerHeight / 2 && r.bottom > innerHeight / 2; });
+    if (mid) setTier(mid.dataset.tier);
+    tone();
+  };
+  railLinks.forEach(a => a.addEventListener('click', e => {
+    const band = day.querySelector(a.hash);
+    if (!band) return;
+    e.preventDefault();
+    const name = band.querySelector('.band__name');
+    const offset = headerH() + (narrow.matches ? asideInner.offsetHeight + 1.5 * rem() : 0.12 * innerHeight);
+    const top = Math.round(name.getBoundingClientRect().top + scrollY - offset);
+    railJump = true;
+    setTier(band.dataset.tier);
+    history.replaceState(null, '', a.hash);
+    scrollTo({ top, behavior: reduceMotion.matches ? 'auto' : 'smooth' });
+    addEventListener('scrollend', endJump, { once: true });
+    jumpTimer = setTimeout(endJump, 1500); // no scrollend (older Safari) or no scroll needed
+  }));
 
   /* floating WhatsApp steps aside where it would sit on content that already offers it */
   const wa = document.querySelector('.wa');
