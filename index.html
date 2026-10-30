@@ -374,7 +374,7 @@ section[id] { scroll-margin-top: var(--header-h-compact); }
   .band { min-height: auto; }
   .band__row { grid-template-columns: 1fr; gap: 1.75rem; }
   .band__photo { max-width: none; order: -1; aspect-ratio: 3 / 2; }
-  .band__photo img[data-crop="rain"] { transform: scale(1.5); transform-origin: 30% 20%; }
+  .band__photo img[data-crop="rain"] { object-position: 50% 0; transform: scale(1.6); transform-origin: 30% 0; }
   .band__text { padding-top: 0; }
   .day__outro { padding-left: var(--pad-x); }
 }
@@ -439,8 +439,8 @@ section[id] { scroll-margin-top: var(--header-h-compact); }
 .final__media img { width: 100%; height: 100%; object-fit: cover; object-position: 60% 50%; }
 .final__media::after { content: ""; position: absolute; inset: 0; background: linear-gradient(0deg, var(--color-night) 0%, var(--color-shade-soft) 22%), linear-gradient(90deg, var(--color-shade) 0%, var(--color-shade-soft) 60%), linear-gradient(0deg, var(--color-shade) 0%, var(--color-shade-soft) 50%); }
 @media (max-width: 760px) {
-  .final__media img { object-position: 85% 40%; }
-  .final__media::after { background: linear-gradient(0deg, var(--color-night) 0%, var(--color-shade) 55%, var(--color-shade-soft) 85%); }
+  .final__media img { object-position: 68% 50%; }
+  .final__media::after { background: linear-gradient(0deg, var(--color-night) 0%, var(--color-shade) 38%, var(--color-shade-soft) 62%); }
 }
 .final__body { padding: 0 var(--pad-x) clamp(3rem, 8vh, 5.5rem); max-width: 40rem; }
 .final .lede { margin-top: 1rem; max-width: 26rem; }
@@ -795,7 +795,7 @@ section[id] { scroll-margin-top: var(--header-h-compact); }
 <div class="menu" id="menu" role="dialog" aria-modal="true" aria-label="Menu">
   <div class="menu__top">
     <button class="menu__close" type="button">Close</button>
-    <a class="wordmark" href="#top">Lumen</a>
+    <a class="wordmark" href="#top" data-placeholder="working brand name">Lumen</a>
     <a class="btn btn--light" href="#booking-TODO" data-placeholder="external booking calendar URL">Book a slot</a>
   </div>
   <nav class="menu__links" aria-label="Sections">

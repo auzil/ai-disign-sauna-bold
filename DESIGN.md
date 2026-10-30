@@ -17,11 +17,11 @@ No library direction fits (dark-poster is the opposite). Built from the Forestis
 | `--color-ink-soft` | `#5E5B55` | secondary text on light ≈ 6:1 |
 | `--color-night` | `#07131A` | dark sections, night tier, hero shade (Forestis photo shadow) |
 | `--color-flame` | `#E7B685` | the one accent — only on night/photo (never text on bone, 1.8:1) |
-| `--color-morning` | `#E2E5E3` | tier band: cool first light |
-| `--color-day` | `#F7F2E7` | tier band: warm daylight |
-| `--color-dusk` | `#A9826A` | gradient stop only, between day and evening |
+| `--color-morning` | `#D9E0E3` | tier band: cool blue-grey first light (round 1) |
+| `--color-day` | `#F6EDDA` | tier band: warm daylight (round 1) |
+| `--color-dusk` | `#9A735C` | gradient stop only, at `--dusk-at: 3vh` into the evening band; evening reached at `--evening-at: 24vh` (round 1) |
 | `--color-evening` | `#2A1E18` | tier band: candle-dark evening |
-| `--color-on-dark` | `#F2F1EB` / soft `rgb(242 241 235 / .74)` | text on dark |
+| `--color-on-dark` | `#F2F1EB` / soft `rgb(242 241 235 / .74)` / muted `rgb(242 241 235 / .86)` (inactive rail links on dark) | text on dark |
 | rules | `rgb(51 51 51 / .18)` light, `rgb(242 241 235 / .22)` dark | 1 px hairlines only |
 
 Radius 0 everywhere. No shadows, no borders around blocks, no texture (Forestis has none).
@@ -30,7 +30,7 @@ Radius 0 everywhere. No shadows, no borders around blocks, no texture (Forestis 
 
 - **Display / headings: EB Garamond** (Google Fonts, SIL OFL). Reason: closest free cut to Trudon's Garamond caps headline + italic line; calm, classical, not a high-contrast Didone (keeps away from the "cream + high-contrast serif" default). Latin Extended covers Czech (ě š č ř ž ý á í é ů ú ň ť ď). OpenType `lnum` + `tnum` present — prices use `font-variant-numeric: lining-nums tabular-nums` (default figures are oldstyle).
 - **Body / UI: Jost** 300/400/500 (Google Fonts, SIL OFL). Reason: geometric-humanist light sans in the spirit of Forestis' Brandon-like body; light weight, open tracking. Latin Extended (Czech) checked.
-- Caps are used only for H1/H2 and the wordmark (Trudon), never as eyebrow labels. Under every caps heading: one italic serif line (Trudon). No mono anywhere.
+- Caps are used only for H1/H2 and the wordmark (Trudon), never as eyebrow labels. The italic serif line (Trudon) only on hero, prices, voucher and the final band (round 1). No mono anywhere.
 
 Scale (fluid): `--text-display` H1 clamp(1.875rem, 3.2vw, 3.25rem) caps 500 +.02em · `--text-h2` clamp(1.625rem, 2.6vw, 2.625rem) caps 400 +.03em · `--text-tier` clamp(4.25rem, 10vw, 10rem) caps 400 (the bold-move scale, tier names only) · `--text-lede` italic clamp(1.1875rem, 1.6vw, 1.5rem) · `--text-price` clamp(2.5rem, 4vw, 3.75rem) · `--text-body` clamp(1.0625rem, 1.1vw, 1.1875rem)/1.65 Jost 300 · `--text-ui` .9375rem Jost 400 · `--text-fine` .875rem.
 
@@ -58,13 +58,13 @@ Forestis proportions: 1080 px image column (`--container-page: 67.5rem`), 2-colu
 
 ## Signature moment — "A day in four lights"
 
-Section `day`: four full-bleed bands, Morning / Day / Evening / Night. Each band's background is its tier colour and the band tops blend from the previous one (cool pale → warm white → amber dusk → candle brown → blue-black), so plain scrolling *is* the day passing — no animation needed for the core effect, works with reduced motion and in full-page screenshots. Each band: tier name at radical serif scale (≈10vw caps), one italic line, two sentences, one photo whose light matches the hour (bright rain shower → sauna wood → lamp-lit relax zone → candle in black water). A sticky aside (desktop left column, mobile top rail) holds the four tier names with the current one active, the SAMPLE "from 1 990 Kč / 2 h for two", "exact price for each time of day is in the calendar", and Book a slot. A soft light disc ("the sun", then a flame glow at night) drifts across the bands with scroll (GSAP scrub, transform only). No tier prices, no hour boundaries — structure only.
+Section `day`: four full-bleed bands, Morning / Day / Evening / Night. Each band's background is its tier colour and the band tops blend from the previous one (cool pale → warm white → amber dusk → candle brown → blue-black), so plain scrolling *is* the day passing — no animation needed for the core effect, works with reduced motion and in full-page screenshots. Each band: tier name at radical serif scale (≈10vw caps), one italic line, two sentences, one photo whose light matches the hour (bright rain shower → sauna wood → lamp-lit relax zone → candle in black water). A sticky aside (desktop left column, mobile top rail) holds the four tier names with the current one active, the SAMPLE "from 1 990 Kč / 2 h for two", "exact price for each time of day is in the calendar", and Book a slot. Each band ends in a text link "Book a morning / daytime / evening / night slot". (Round 1: the scrubbed light disc was removed; the colour bands are the move.) No tier prices, no hour boundaries — structure only.
 
 ## Motion plan
 
 1. Load: hero photo scale 1.06 → 1 (2.4 s, power2.out); H1 line-mask reveal (SplitText, expo.out, .9 s, stagger .08); offer stack opacity 0 → 1 after.
 2. Space grid photos: one clip-path reveal on first enter (inset from bottom), no fade-up on text.
-3. Day section: aside tone + rail switch (CSS transition .6 s on tier change); light disc scrubbed across the section (transform only).
+3. Day section: aside tone + rail switch (CSS transition .6 s, each link flips on its own at the dusk stop).
 4. Menu: clip-path wipe .5 s power3.inOut, links stagger.
 Everything in `gsap.matchMedia('(prefers-reduced-motion: no-preference)')`; initial hidden states set by GSAP only.
 
@@ -79,14 +79,14 @@ Everything in `gsap.matchMedia('(prefers-reduced-motion: no-preference)')`; init
 | space: shower | `shower-1.jpg` | dark stone, misted glass |
 | space: relax | `relax-2.jpg` | symmetrical loungers, stone wall — strongest Forestis frame |
 | included | `robes-1.jpg` | robes, slippers, one candle |
-| day: Morning | `shower-2.jpg` | brightest, white rain light = first light |
-| day: Day | `sauna-1.jpg` (tight crop) | warm wood, brighter than sauna-2 |
-| day: Evening | `relax-1.jpg` | lamp-lit, robes, stone wall |
-| day: Night | `water-2.jpg` | candle in black water, brass spout |
+| day: Morning | `shower-2.jpg` (tight on rain head, lightened) | white rain light = first light |
+| day: Day | `media/day-sauna-2.jpg` (variant-local) | high-key, no candles: daylight |
+| day: Evening | `media/relax-empty-2.jpg` (variant-local) | empty lamp-lit relax room |
+| day: Night | `media/night-candle-2.jpg` (variant-local) | one candle, black water |
 | addons | `addons-1.jpg` | darker, Trudon brass + flame reflections |
 | how it works | `door-1.jpg` | night courtyard door + keypad = self check-in |
 | voucher | `voucher-2.jpg` | cleaner envelope on robe |
-| final CTA | `hero-1.jpg` | wide candle-lit jacuzzi, couple far right |
+| final CTA | `media/final-empty-1.jpg` (variant-local) | the hero room, empty |
 
 ## Hero wireframes
 

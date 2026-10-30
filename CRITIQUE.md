@@ -1,74 +1,85 @@
-# Critique — b-bold — round 1
+# Critique — b-bold — round 2
 
-Verdict: FIX
-Scores: Sells 4 · Fidelity 4 · Distinctiveness 3 · Typography 3 · Imagery 3 · Mobile 4 · Craft 3  (total 24/35)
+Verdict: SHIP (rubric: PASS)
+Scores: Sells 5 · Fidelity 4 · Distinctiveness 4 · Typography 4 · Imagery 4 · Mobile 4 · Craft 4  (total 29/35)
+
+All screenshots are fresh: full page, fold and reduced motion at 390 and 1440, plus viewport shots in every band. The dusk blend at 1440 was swept every 6 px of scroll (144 steps), measuring contrast for each rail line and aside line on rendered pixels.
 
 Evidence per axis:
-- **Sells 4**: the 390×844 fold has what (whole spa for two, Prague), the SAMPLE from-price, reassurance (24/7, robes included, 18+) and two Book a slot buttons. But the price section, a third of the page (4 919 of 15 046 px at 1440, 4 239 of 12 702 px at 390), carries one number and no action inside the bands.
-- **Fidelity 4**: bone `#F2F1EB` page, 1080 px two-column mixed-ratio grid, ~200 px air, radius 0, dark single-source photos. All Forestis. The departures (11 fold elements against Forestis' 6, Garamond caps instead of light sans) are allowed by the brief.
-- **Distinctiveness 3**: the day→evening blend is the best moment on the page. Morning (`#E2E5E3`) and Day (`#F7F2E7`) read as the same pale section, though, both band photos are night-lit, and the scrubbed sun disc is invisible on light bands. The move only lands in its second half.
-- **Typography 3**: the hero is strong and the 10vw tier names have real presence. Every section repeats the same caps H2 + italic line + centred paragraph (7 times), inactive rail links fail contrast, and the final band's italic line breaks badly ("their / prices").
-- **Imagery 3**: consistent candle-dark grade, tasteful, never sexualized. Problems: a ghost face in the hero-1 mirror, the couple-in-jacuzzi scene twice (hero and final), sauna, shower and relax (the same couple in the same pose) each twice, and band photos that don't match their hour.
-- **Mobile 4**: readable, the sticky WhatsApp + Book bar works, and the band rail takes the band colour. The price section is long (4 screens with one fact), and the key price note is set at 14 px.
-- **Craft 3**: reduced motion is complete and focus trap and Esc work. Measured contrast fails, the floating button collides with content, `TODO-OWNER.md` is missing, and the sun is an invisible soft-light layer that still costs paint.
+- **Sells 5**: the 390×844 fold is unchanged and complete: what, for two, SAMPLE from-price, 24/7, robes included, 18+, Book a slot and a gift path. Each band now ends in "Book a morning / daytime / evening / night slot". The price section dropped from 33% to 28% of the page (3 885 of 13 871 px at 1440). Per-tier prices are excluded by the orchestrator ruling.
+- **Fidelity 4**: Forestis discipline everywhere except the deliberate bands: bone page, 1080 px mixed-ratio grid, radius 0, no boxes, low-key photos, generous air. The hero has the same element count as round 1; the desktop header no longer repeats "Gift voucher" over the hero.
+- **Distinctiveness 4**: the four bands now read as four lights: cool blue-grey morning (`#D9E0E3`), warm cream day with a high-key sauna, a soft horizon into amber and candle-brown, then blue-black night. The day→evening horizon under the 10vw bone "EVENING" is the memorable moment. With the sun disc gone, nothing on the page is decoration.
+- **Typography 4**: the caps + italic-line formula is gone from intro, space, add-ons, how it works and FAQ. It stays on the hero, prices, voucher and final band, where it earns its place. Inactive rail links use solid soft colours. What's left is two widows (punch list 4).
+- **Imagery 4**: the ghost-face photo is out, no couple scene repeats, and the Evening and Night photos are new frames. The final band is the hero room, empty. Remaining: the Day sauna looks like a different room from the grid sauna, and there are faint pale shapes in the final band's mirror (punch list 1–2).
+- **Mobile 4**: each band fits roughly one screen (3:2 photo, name, two lines, link). The rail takes the band colour, and the sticky WhatsApp + Book bar is present throughout. The final band's mobile crop is mostly blurred mirror.
+- **Craft 4**: reduced motion is complete, and the full-page capture now includes the final photo. The WhatsApp float tucks away over the facts row, bands, final band and footer (checked: absent in the facts, morning, day, evening, night and final shots). `TODO-OWNER.md` is thorough. Email links go to `#email-TODO`, and the footer shows only "Prague". The only measurable fault is the transient dusk dip (below).
+
+## Round 1 items — verification
+
+| # | Item | Status |
+|---|---|---|
+| 1 | Bold move earns its place | **Done.** Bands are 72vh; morning and day differ visibly; each band has a booking link; the Day photo is high-key; the Morning photo is cropped to the rain head and lightened. Per-tier prices are excluded by ruling. |
+| 2 | Contrast | **Done, with an accepted residual.** Inactive rail links are now about 5–6:1 on light and use the bone-muted token on dark. Mobile final headline: worst sample 10:1. Dusk dip: see below. |
+| 3 | Photo artifacts and repeats | **Done.** `hero-1` is removed. Evening uses `relax-empty-2`, Night `night-candle-2`, final band `final-empty-1`, and the shower smear is cropped out. |
+| 4 | Closing headline innuendo | **Done.** "Book the whole spa for two" / "Free slots are in the calendar, day and night." |
+| 5 | Heading formula | **Done.** |
+| 6 | WhatsApp float collisions | **Done** (`.is-tucked` via IntersectionObserver). |
+| 7 | Unconfirmed copy | **Done.** Photo-derived premises claims and payment assumptions are gone; "confirmed when you book" throughout; tier names are consistent. |
+| 8 | Paper trail | **Done.** `TODO-OWNER.md` exists; email links go to `#email-TODO`; no district; CS switch and legal links flagged. |
+| 9 | Sun disc | **Done** (deleted). |
+| 10 | Small craft | **Done.** Price note is 17 px at 390; footer row on a baseline; the final photo fades to night; header gift link hidden over the hero; H1 clears the man's back by ~55 px. |
+
+**Dusk dip, judged.** The 1440 sweep measured the dip as the 3vh light→dusk ramp crosses the sticky rail:
+- Each rail line falls below 3:1 for 4–5 samples, about 24–30 px of scroll, with a worst sample of ~1.5:1.
+- Each line falls below 4.5:1 for about 12–13 samples (~75 px).
+- The aside price lines stay above 2.8:1 throughout.
+
+It is a moving horizon crossing a line, not text parked on an unreadable tone. You can't be reading a line during the quarter-second the edge passes behind it, and it settles to ≥5:1 on both sides. A backing plate or a hard edge would remove the dip but also the move. I accept it as a residual and don't count it as a defect. Mention it in the port's accessibility notes so a later audit doesn't flag it blind.
 
 ## Hard fails
 
-None that block on their own. Checked:
-- House style: no mono labels, eyebrows, decorative numbering (1–4 in How it works is a real sequence), borders, stamps, tickets or outlined digits. Serif caps + italic line is Trudon's pairing and isn't on the banned list, but it's used as a formula in every section (punch item 5).
-- First mobile viewport: price, reassurance and primary action are all present.
-- Reduced motion: content is complete. The 1440 full-page capture with motion showed the final band without its photo. A viewport shot scrolled to `#book` shows the photo, so this is a capture timing issue with the 2752 px eager image, not a page bug.
-- Invented facts: no reviews, ratings or stats, and no hours or tier prices beyond SAMPLE "from 1 990 Kč / 2 hours for two". There are softer inventions, though: premises details taken from the AI photos, assumed booking-system behaviour, and a specific district (punch items 7–8).
-- Borderline: the final headline at 390 sits partly over a bare shoulder at 2.4:1 (punch item 2).
+None. Checked:
+- House-style list: no mono labels, eyebrows, decorative numbering, bordered boxes, stamps, tickets or outlined digits.
+- No placeholder visible as brackets.
+- The first mobile viewport is complete.
+- Reduced motion is complete.
+- No invented reviews, ratings, stats, hours or prices; only SAMPLE "from 1 990 Kč / 2 hours for two" is shown.
+- Nothing sexualized. The new closing line is literal.
 
 ## Compared with the style reference (1440 hero)
 
-| Aspect | Reference (Forestis fold / Trudon fold) | Variant | Fix |
+| Aspect | Reference (Forestis / Trudon fold) | Variant | Note |
 |---|---|---|---|
-| Image coverage | 100% (F), 96% (T) | 100% | keep |
-| Elements in fold | 6 (F), ~12 (T) | 11 (menu, EN/CS, wordmark, Gift voucher, Book, H1, lede, price, CTA, gift link, facts) | acceptable, the offer stack is required; "Gift voucher" in the header and "Give it as a gift" in the hero repeat each other, so drop one on desktop |
-| Headline | light sans ~2.9vw centred (F); Garamond caps ~2.8vw + italic line, bottom-left (T) | Garamond caps ~3.2vw, two lines, italic lede, bottom-left | good Trudon execution; second line ends ~30 px from the man's back, so allow at most 46rem width |
-| Primary action | plain text "Book" (F); outlined caps button (T) | solid bone block, radius 0 | right call for conversion |
-| Below-fold heads | light sans sentence case, no subline (F) | caps + italic line in all 7 sections | see punch item 5 |
-| Photo light | blue-black shadows, one warm source (F); flame reflections in brass and mirror (T) | matches both | keep |
-| Bold move | n/a: Forestis is all bone + photo | four full-bleed bands Morning→Night | lands at dusk, flat in the first half (punch item 1) |
+| Image coverage | 100% / 96% | 100% | ✓ |
+| Elements in fold | 6 / ~12 | 10 (header gift link now hidden over the hero) | justified by the offer stack |
+| Headline | light sans centred / Garamond caps + italic, bottom-left | Garamond caps + italic, bottom-left, clears the subjects | ✓ Trudon pairing |
+| Below-fold rhythm | image group → short head → 2–3 lines → air | same; italic line kept only where it earns it | ✓ |
+| Photo grade | blue-black shadows, single warm source | same, except the deliberate high-key Day band | see punch 1 |
 
-## Punch list (most important first, max 10)
+## Punch list (polish; none blocks SHIP)
 
-1. **Make the bold move earn its third of the page**: `#prices`, `.band`.
-   - Cut each band's `min-height: 100vh` to ~72vh on desktop. At 390, switch `.band__photo` from 4:5 to 3:2 so a band fits one screen with its text.
-   - Make Morning visibly different from Day: shift `--color-morning` to a cool blue-grey such as `#D9E0E3` and keep Day warm, or nobody sees "morning" before "day".
-   - Give every band a conversion job without inventing numbers. Under each italic line, add a text link to `#booking-TODO`: "Book a morning slot", "Book a daytime slot" and so on. Reserve a price line in the band text column in the aside price style (`2rem` Garamond), and ask the owner for SAMPLE per-tier prices so it can be filled. Until then, leave it out; don't show a dash or "—".
-   - Regenerate the Day photo so it isn't another night frame: regenerate slot `sauna`, prompt fix: "even, bright warm-white light from a concealed ceiling strip, high-key, pale aspen, no candles, no visible windows". Morning `shower-2` can stay, but grade it lighter: `filter: brightness(1.08) saturate(.9)` on the Morning band only.
-2. **Contrast in and around the bold move**: `.rail a`, `.day__body` gradients, `.final`.
-   - Inactive rail links measure 2.1:1 on the Day cream and 1.8:1 on the dusk mid-tone, and they're working anchor links. Make the inactive state `--color-ink-soft` (`#5E5B55`, ~6:1) on light and `rgb(242 241 235 / .74)` on dark instead of the opacity fade.
-   - Desktop: the day→evening blend leaves a span where both ink and bone measure ~3.2–3.5:1, and the sticky rail passes through it. Shorten the dusk stop in `.band[data-tier="evening"]` to the first ~10vh of the band. Flip the rail tone at the gradient's midpoint, not at the "24% into the band" offset.
-   - 390: "TONIGHT IS A GOOD" in `.final` sits over the man's shoulder at 2.4:1. Set `.final__media img { object-position: 85% 40% }` on mobile and raise the bottom shade so it reaches `--color-shade` by 55% height. Target ≥3:1 under every glyph.
-3. **Photo artifacts and repeats**.
-   - Regenerate slot `hero` image `hero-1.jpg`: a blurred extra face appears in the mirror between the couple. It reads as a third person, the opposite of "nobody else inside". Prompt fix: "mirror shows only steam and candle reflections, no faces or figures reflected". Better still, don't use a couple shot for `.final` at all: hero and final are the same scene. Use a people-free wide frame instead (regenerate `water` at 16:9: "wide view of the empty candle-lit stone jacuzzi, steam, brass spout, no people").
-   - `relax-1` (Evening band) and `relax-2` (relax room) show the same couple in the same robes and pose. Swap the Evening band to `robes-2` or regenerate slot `relax`: "empty lamp-lit relax room, two loungers, folded throw, candle, no people".
-   - `sauna-1`/`sauna-2` and `shower-1`/`shower-2` also repeat. The Day fix in item 1 resolves sauna. For shower, use `shower-1` in the space grid only, and the regraded `shower-2` in Morning only if its crop differs clearly (tight on the rain head).
-   - Minor: `shower-2` has a dark scribble-like smear on the misted glass (right third). Crop it out with `object-position: 30% 50%`.
-4. **Innuendo in the closing headline**: `.final h2`. "Tonight is a good night for it" in caps over a bare-shouldered couple reads as a double meaning, and intake §7 bans innuendo. Replace it with something literal, for example "A WHOLE SPA, TONIGHT OR ANY NIGHT" with the italic line "Free slots and prices are in the calendar." Set the lede `max-width` to ~26rem so it doesn't break after "their".
-5. **Stop the heading formula**: `.intro`, `.space`, `.addons`, `.how`, `.voucher`, `.faq`. Seven sections repeat caps H2 + italic serif line + centred paragraph. Trudon uses the italic line once, and Forestis has none. Keep the italic line on the hero, `#prices` and `#voucher` only. Delete it in intro, space, addons, how and faq; the body text already says it. That restores Forestis' quietness and keeps the pairing from turning into a tic.
-6. **WhatsApp float collides**: `.wa`, desktop. At 1440 it sits on the bottom-right corner of the Morning and Evening band photos. When the intro facts row scrolls to the bottom of the viewport it overlaps "Adults only" (x 1005–1260 against 1233–1365), and it sits over the footer columns. Add an IntersectionObserver that toggles a class to hide `.wa` while `.day__body`, `.final` or `footer` intersect the viewport. The aside and the final band already offer Book and WhatsApp there.
-7. **Copy states things nobody confirmed**: intro, space, addons, FAQ.
-   - Premises details come from the AI photos, not the intake: "rain shower", "by candlelight", "Two low loungers, linen, a candle and a glass of water", "Chilled, with two glasses, ready by the jacuzzi", "Fresh seasonal fruit". Rewrite them neutrally ("shower", "a quiet room to rest", "Prosecco", "Fruit plate") or flag each one.
-   - Booking-system behaviour is assumed: "shown before you pay" (payment method TODO); "the amount and the maximum number of guests are shown in the calendar" and the cancellation line (calendar set-up TODO). Soften to "confirmed when you book" and list these in TODO-OWNER.
-   - Naming: intro says "Morning, afternoon, evening and night" but the tier is "Day". Use the tier names.
-8. **Placeholders need their paper trail**: there is no `TODO-OWNER.md` in `b-bold/`; `a-close` has one. Create it, listing every `data-placeholder` plus the copy items from 7. In the menu, `mailto:hello@lumenspa.cz` (line ~807) has no `data-placeholder`. `lumenspa.cz` may be someone else's real domain, so point both mailto links to `#email-TODO` and keep the sample text visible. "Vinohrady, Prague 2" is a specific location the owner never gave. Keep it only if it's listed as SAMPLE in TODO-OWNER; otherwise show "Prague" plus "Open in maps". The EN/CS switch is visual only, which is fine for the prototype: leave EN as the current state, but make sure `#lang-cs-TODO` is in TODO-OWNER.
-9. **Sun disc: show it or cut it**: `.sun`. A 70vmax radial layer with `mix-blend-mode: soft-light` is scrubbed across the whole section, but it's invisible on Morning and Day and barely visible on Night. It costs a full-viewport blend repaint on every scroll frame on phones for no visible return. Either remove `mix-blend-mode`, use a normal-blend warm radial (`--color-flame` at .18 on light bands, .35 on dark) and limit it to `min-width: 901px`, or delete it. The colour bands are the move; the disc is optional.
-10. **Small craft**:
-    - The price note in `#prices` ("Morning, day, evening and night each have their own price…") is 14 px at 390. It's a sell sentence, so set it to `--text-body` (≥16 px).
-    - The footer line "Photos on this page are temporary illustrations." sits ~5 px above the baseline of Terms/Privacy. Align with `align-items: baseline`.
-    - The `.final` photo ends in a visible hard edge above the footer. Extend the bottom gradient to full `--color-night` at 100%.
+1. **Day sauna reads as a different room**: Day band, `media/day-sauna-2.jpg`. It is a bright pine showroom cabin with a different door and heater from the dark aspen `sauna-2` in the grid, so a guest sees two saunas. Regenerate slot `day-sauna` with `sauna-2.jpg` as the reference image. Prompt fix: "the same sauna as the reference: same aspen benches, same black door frame, same heater, now lit by bright even warm-white light from the concealed strip, high-key, no candles".
+2. **Final band photo**: `.final`, `media/final-empty-1.jpg`.
+   - Desktop: two blurred pale ovals in the mirror just above the candle row (viewport x≈1180–1300, y≈330–370). After the hero-1 ghost, they can read as reflected heads. Either `final-empty-2` has a cleaner mirror, or regenerate with "mirror shows only candle flames and steam, no rounded pale shapes".
+   - Mobile: the crop is mostly out-of-focus mirror. Set `object-position: 62% 70%` at ≤760 px so the candle ledge and water are in frame under the headline.
+3. **The prices italic line promises four numbers the page doesn't show**: `#prices`. "Four times of day, four prices." Within the ruling, change it to "Each time of day has its own price. Pick the light you like."
+4. **Widows**:
+   - 1440 voucher body: "buy." sits alone on its own line.
+   - 390 prices italic: "four / prices." breaks mid-thought.
+   - Add `text-wrap: pretty` to body paragraphs and `text-wrap: balance` to `.lede`.
+5. **Add-on lines are vague**: `#addons`. "Something to toast with / Something light to share" is honest but sells nothing. Keep it for the prototype; when the owner confirms what's included (TODO-OWNER row exists), replace with concrete contents.
+6. **Morning crop resolution**: `.band[data-tier="morning"] img`. Scale 2 on a 928 px source leaves ~464 source px for a 352 px box, which is soft on 2× screens. Acceptable for a temporary image. When real photos arrive, supply ≥1400 px for this slot.
+7. **Housekeeping**:
+    - The photo table in `TODO-OWNER.md` lists `media/temp/...` paths, but `index.html` loads the variant-local copies in `prototype/b-bold/media/`. Align the paths.
+    - Delete the stray `media/TEMP-MEDIA copy.md` and `media/manifest copy.json`.
+    - There is a `.git` directory inside `prototype/b-bold/`. Confirm it's intended before the port.
+8. **Port note**: record the dusk-blend contrast residual and the four tier tokens plus `--color-dusk`, `--dusk-at` and `--evening-at` in the port's `@theme`. Swap the eager 2–3 MB JPGs for `next/image` with lazy loading below the fold.
 
 ## What works (keep it)
 
-- The 390 first viewport: steam above for the headline, the couple and candles in the middle, the price/CTA/facts stack over dark water. It sells and still looks like Forestis.
-- The evening→night stretch of the bands: the amber-to-candle-brown blend under the 10vw "EVENING" in bone is the page's memorable moment. Protect it while fixing the first half.
-- The mobile tier rail taking the band colour, and the sticky WhatsApp + Book bar after the hero.
-- The CSS-gradient core of the bold move: it works with reduced motion, without JS and in full-page captures.
-- The Forestis space grid (1080 px, 20 px gutter, mixed ratios) and the radius-0, borderless discipline everywhere.
-- Add-ons as a plain hairline list on night and How it works as a real 4-step sequence: no icon tiles, no cards.
-- No reviews, ratings or stats anywhere. FAQ and How it works carry the reassurance honestly.
+- The 390 first viewport: complete offer stack over the dark water, headline in the steam, and it still looks like Forestis.
+- The day as four lights. The cool→warm→horizon→candle-brown→blue-black progression is done in CSS gradients, so it works with reduced motion and without JS. The bone 10vw "EVENING" over the amber horizon is the page's signature.
+- One booking link per band plus the sticky aside: the bold move now converts instead of only decorating.
+- Empty rooms in the bands and the final band: the page now shows a couple exactly twice (hero, relax room), which suits "the whole space, just for you".
+- The quiet section rhythm after removing the italic sublines: plain hairline add-on list, real 4-step how-it-works, centred occasions line, borderless FAQ.
+- An honest paper trail: `TODO-OWNER.md` covers every placeholder, and the copy says "confirmed when you book" instead of inventing terms.
